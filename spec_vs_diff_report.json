@@ -1,0 +1,54 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T21:47:11.562Z",
+  "summary": "The diff implements the vast majority of requirements including the Zelda-themed UI, home screen, 3 progression levels, gameplay screen, level complete/failed screens, backend unlock persistence, and image assets. A few minor gaps exist around the backend using Principal-based storage rather than global/anonymous state, and Internet Identity infrastructure was included despite being an explicit non-goal.",
+  "missing_requirements": [
+    {
+      "id": "REQ-6",
+      "requirement": "Backend stores unlock state globally or per anonymous session (since there's no auth), not per authenticated Principal.",
+      "reason": "The backend/main.mo uses a Map keyed by Principal. The spec states there is no auth and suggests storing state globally or per anonymous session, not per authenticated identity.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity / authentication infrastructure including InternetIdentityProvider, useInternetIdentity hook, and AuthClient integration",
+      "reason": "The build request explicitly lists 'User authentication or Internet Identity login' as a non-goal, yet the diff includes a full InternetIdentityProvider, useInternetIdentity hook with AuthClient, and actor creation wired to identity-based authentication.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/main.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.82,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/FeedbackMessage.tsx",
+    "frontend/src/components/GameplayUI.tsx",
+    "frontend/src/components/HeartIcons.tsx",
+    "frontend/src/components/ZeldaPanel.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useGameState.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/Home.tsx",
+    "frontend/src/pages/Level.tsx",
+    "frontend/src/pages/LevelComplete.tsx",
+    "frontend/src/pages/LevelFailed.tsx",
+    "frontend/src/utils/questionGenerator.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

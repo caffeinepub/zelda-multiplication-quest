@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A gamified multiplication practice app for 4th graders with 3 progressive levels, Zelda-inspired color scheme and aesthetic, where difficulty increases after each successful level.",
+  "architectural_notes": [
+    "Game has exactly 3 levels with increasing multiplication difficulty",
+    "Visual theme should use Zelda color palette (greens, golds, browns, dark tones)"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Pixel-art style parchment/aged paper scroll texture background in golden-tan tones with worn edges (parchment-bg.dim_800x600.png)\n- Triforce-shaped golden yellow geometric icon on a transparent background, pixel-art style (triforce-icon.dim_128x128.png)\n- Fantasy game title banner with the text 'Quest of Numbers' styled in a Zelda-like gold-on-dark-green engraved look (title-banner.dim_800x200.png)",
+  "existing_features": [
+    {
+      "id": "feature-design-and-apply-a-zelda-inspired-visual-theme-throughout-the-entire-app-use-a-dark-forest-green-primary-color-2d5a27-golden-yellow-for-highlights-and-buttons-c9a84c-parchment-tan-for-backgrounds-f2e8c9-deep-brown-for-borders-and-text-3b1f0a-and-red-for-danger-wrong-answers-8b0000-use-a-fantasy-serif-or-pixel-style-font-for-headings-add-decorative-zelda-style-ui-elements-such-as-bordered-panels-resembling-hud-elements-heart-icons-for-lives-health-and-star-triforce-like-accent-shapes-maintain-this-theme-consistently-across-all-screens",
+      "title": "Design and apply a Zelda-inspired visual theme throughout the entire app: use a dark forest green primary color (#2D5A27), golden yellow for highlights and buttons (#C9A84C), parchment/tan for backgrounds (#F2E8C9), deep brown for borders and text (#3B1F0A), and red for danger/wrong answers (#8B0000). Use a fantasy serif or pixel-style font for headings. Add decorative Zelda-style UI elements such as bordered panels resembling HUD elements, heart icons for lives/health, and star/triforce-like accent shapes. Maintain this theme consistently across all screens.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-home-start-screen-with-a-zelda-styled-title-quest-of-numbers-a-brief-description-prove-your-multiplication-mastery-across-3-epic-levels-and-a-begin-quest-button-that-navigates-to-level-1-show-locked-unlocked-status-for-each-of-the-3-levels-using-zelda-style-icons-e-g-a-sword-icon-for-unlocked-a-lock-for-locked",
+      "title": "Create a Home/Start screen with a Zelda-styled title 'Quest of Numbers', a brief description ('Prove your multiplication mastery across 3 epic levels!'), and a 'Begin Quest' button that navigates to Level 1. Show locked/unlocked status for each of the 3 levels using Zelda-style icons (e.g., a sword icon for unlocked, a lock for locked).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-3-progressive-multiplication-levels-with-increasing-difficulty-appropriate-for-a-4th-grader-level-1-the-forest-trial-multiplication-with-single-digit-numbers-only-e-g-3-4-6-7-up-to-9-9-level-2-the-temple-challenge-multiplication-involving-one-factor-up-to-12-e-g-11-4-12-7-level-3-the-final-dungeon-multiplication-of-two-digit-numbers-by-single-digits-e-g-13-4-15-6-18-9-each-level-presents-10-questions-randomly-generated-the-player-must-answer-8-out-of-10-correctly-to-pass-and-unlock-the-next-level",
+      "title": "Implement 3 progressive multiplication levels with increasing difficulty appropriate for a 4th grader. Level 1 (The Forest Trial): multiplication with single-digit numbers only (e.g., 3×4, 6×7, up to 9×9). Level 2 (The Temple Challenge): multiplication involving one factor up to 12 (e.g., 11×4, 12×7). Level 3 (The Final Dungeon): multiplication of two-digit numbers by single digits (e.g., 13×4, 15×6, 18×9). Each level presents 10 questions randomly generated. The player must answer 8 out of 10 correctly to pass and unlock the next level.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-gameplay-screen-for-each-level-that-shows-the-level-name-with-a-zelda-style-title-banner-a-question-counter-e-g-question-3-of-10-a-health-bar-or-heart-icons-3-hearts-losing-one-per-wrong-answer-after-the-2nd-mistake-the-current-multiplication-question-displayed-prominently-a-numeric-input-field-and-submit-button-immediate-visual-audio-style-feedback-green-glow-correct-message-or-red-flash-wrong-message-with-the-correct-answer-shown-display-a-progress-bar-showing-questions-answered",
+      "title": "Build a gameplay screen for each level that shows: the level name with a Zelda-style title banner, a question counter (e.g., 'Question 3 of 10'), a health bar or heart icons (3 hearts, losing one per wrong answer after the 2nd mistake), the current multiplication question displayed prominently, a numeric input field and 'Submit' button, immediate visual/audio-style feedback (green glow + 'Correct!' message or red flash + 'Wrong!' message with the correct answer shown). Display a progress bar showing questions answered.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-level-complete-screen-shown-after-passing-a-level-score-8-10-with-a-zelda-styled-victory-message-e-g-you-obtained-the-forest-medallion-the-player-s-score-a-continue-to-next-level-button-or-return-to-map-if-on-level-3-implement-a-level-failed-screen-shown-when-score-8-10-with-a-zelda-styled-message-e-g-the-dungeon-defeated-you-the-player-s-score-and-a-try-again-button-to-restart-the-level",
+      "title": "Implement a Level Complete screen shown after passing a level (score ≥ 8/10) with a Zelda-styled victory message (e.g., 'You obtained the Forest Medallion!'), the player's score, a 'Continue to Next Level' button (or 'Return to Map' if on Level 3). Implement a Level Failed screen shown when score < 8/10, with a Zelda-styled message (e.g., 'The dungeon defeated you...'), the player's score, and a 'Try Again' button to restart the level.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-persist-level-unlock-progress-in-the-backend-store-which-levels-are-unlocked-per-anonymous-session-or-globally-since-there-s-no-auth-the-backend-should-expose-functions-to-get-unlocked-levels-and-to-unlock-the-next-level-upon-passing-the-frontend-reads-unlock-state-on-load-and-updates-it-when-a-level-is-passed",
+      "title": "Persist level unlock progress in the backend. Store which levels are unlocked per anonymous session (or globally, since there's no auth). The backend should expose functions to get unlocked levels and to unlock the next level upon passing. The frontend reads unlock state on load and updates it when a level is passed.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-the-following-static-image-assets-for-the-app-a-pixel-art-style-parchment-scroll-background-texture-for-panels-a-triforce-inspired-golden-icon-accent-and-a-zelda-style-game-logo-banner-for-quest-of-numbers-store-all-generated-images-in-frontend-public-assets-generated-and-reference-them-throughout-the-ui",
+      "title": "Generate the following static image assets for the app: a pixel-art style parchment scroll background texture for panels, a triforce-inspired golden icon accent, and a Zelda-style game logo banner for 'Quest of Numbers'. Store all generated images in frontend/public/assets/generated and reference them throughout the UI.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "3 progressive multiplication levels that increase in difficulty after each successful level completion",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Zelda-inspired color scheme and visual aesthetic throughout the app",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "4th-grade appropriate multiplication questions (times tables up to 12)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Level progression system with success tracking to unlock next level",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "2d",
+  "projectName": "Zelda Multiplication Quest",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

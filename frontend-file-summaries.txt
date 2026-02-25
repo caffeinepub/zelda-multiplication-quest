@@ -1,0 +1,17 @@
+{
+  "frontend/src/index.css": "Complete Zelda-themed CSS with OKLCH color tokens for parchment, gold, forest green, brown, and red palette; custom component classes for zelda-panel, zelda-btn, zelda-input, zelda-heading, heart icons, feedback messages, progress bar, and animations.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Zelda color tokens (parchment, gold, green, brown, red), Cinzel/IM Fell English font families, and custom shadow utilities.",
+  "frontend/src/utils/questionGenerator.ts": "Utility functions to generate 10 random multiplication questions per level — Level 1 (single-digit), Level 2 (up to 12), Level 3 (two-digit × single-digit).",
+  "frontend/src/hooks/useGameState.ts": "Custom React hook managing all gameplay state including score, mistakes, lives (3 hearts, lose one per 2 mistakes), feedback visibility, and level completion/pass logic.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching unlocked levels from the backend and mutating to unlock the next level, with automatic cache invalidation.",
+  "frontend/src/components/ZeldaPanel.tsx": "Reusable Zelda-styled panel component with parchment background texture, decorative gold corner accents, and double-border HUD frame.",
+  "frontend/src/components/HeartIcons.tsx": "Heart icon component displaying filled/empty hearts using Lucide icons with Zelda red styling for player lives.",
+  "frontend/src/components/FeedbackMessage.tsx": "Animated feedback component showing green \"Correct!\" or red \"Wrong! The answer was X\" messages with icons after each answer submission.",
+  "frontend/src/components/GameplayUI.tsx": "Full gameplay interface component with level header, HUD (hearts + question counter), progress bar, large question display, numeric input, submit button, and integrated feedback.",
+  "frontend/src/pages/Home.tsx": "Home screen with Zelda-themed title, triforce accents, three level cards with locked/unlocked states, and navigation using correct TanStack Router parameterized path syntax (`/level/$levelId` with `params`).",
+  "frontend/src/pages/Level.tsx": "Level gameplay page that generates questions, manages game state, and navigates to LevelComplete/LevelFailed using correct TanStack Router parameterized navigation.",
+  "frontend/src/pages/LevelComplete.tsx": "Victory screen with Zelda-themed reward messages, score display, and navigation using correct TanStack Router `params` syntax for the \"Continue to Next Level\" button.",
+  "frontend/src/pages/LevelFailed.tsx": "Defeat screen with Zelda-themed flavor text, score display, and \"Try Again\" navigation using correct TanStack Router `params` syntax to restart the same level.",
+  "frontend/src/App.tsx": "Main app with TanStack Router setup defining routes for Home, Level (with levelId param), LevelComplete, and LevelFailed with search param validation.",
+  "frontend/index.html": "HTML entry point with Google Fonts preloading for Cinzel, Cinzel Decorative, and IM Fell English fantasy fonts."
+}

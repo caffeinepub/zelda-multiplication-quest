@@ -1,0 +1,206 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Zelda-themed Gamified Multiplication App for 4th Graders",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Design and apply a Zelda-inspired visual theme throughout the entire app",
+      "acceptanceCriteria": [
+        "Primary background uses parchment/tan (#F2E8C9) or dark green tones consistent with Zelda palette",
+        "Buttons and interactive elements use golden yellow (#C9A84C) styling",
+        "Fantasy-themed typography applied to headings and level titles",
+        "Decorative border/frame elements on panels and cards resemble Zelda HUD style",
+        "Heart or life icons visible in the UI",
+        "Color scheme is consistent on all screens"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Add Zelda-inspired color palette to the theme configuration: dark forest green (#2D5A27) as primary, golden yellow (#C9A84C) for highlights, parchment/tan (#F2E8C9) for backgrounds, deep brown (#3B1F0A) for borders/text, and red (#8B0000) for danger. Configure fantasy serif and pixel-style font families."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Import fantasy fonts (e.g., Google Fonts fantasy serif or pixel fonts) and define global CSS variables for Zelda color palette. Add base styling for Zelda-themed decorative borders, panel frames, and HUD-like container classes. Set default body background to parchment tone."
+        },
+        {
+          "path": "frontend/src/components/ui/ZeldaPanel.tsx",
+          "operation": "create",
+          "description": "Create a reusable Zelda-styled panel component with decorative borders, parchment background, and HUD-like frame styling. This component wraps content throughout the app to maintain consistent theming. Reference the generated parchment background image at frontend/public/assets/generated/parchment-bg.dim_800x600.png as a background texture."
+        },
+        {
+          "path": "frontend/src/components/ui/HeartIcons.tsx",
+          "operation": "create",
+          "description": "Create a component that displays heart icons representing player lives/health. Accept props for total hearts and filled hearts. Use Zelda red (#8B0000) for hearts and styling consistent with the theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create a Home/Start screen with Zelda-styled title, description, and level unlock indicators",
+      "acceptanceCriteria": [
+        "Home screen displays the app title 'Quest of Numbers' in fantasy-style heading",
+        "Three level indicators are shown with locked/unlocked visual states",
+        "'Begin Quest' button navigates to Level 1",
+        "Screen is styled with Zelda color palette"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "create",
+          "description": "Create the Home/Start screen component displaying the game title 'Quest of Numbers', a brief description ('Prove your multiplication mastery across 3 epic levels!'), and a 'Begin Quest' button that navigates to Level 1. Show three level indicators with locked/unlocked status using sword icons for unlocked levels and lock icons for locked levels. Fetch unlock state from backend using getUnlockedLevels(). Reference the generated title banner image at frontend/public/assets/generated/title-banner.dim_800x200.png for the title area and the triforce icon at frontend/public/assets/generated/triforce-icon.dim_128x128.png as an accent. Use the ZeldaPanel component for layout."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Set up React Router with routes for Home (/), Level 1 (/level/1), Level 2 (/level/2), Level 3 (/level/3), Level Complete (/level-complete), and Level Failed (/level-failed). Import and register all page components. Set Home as the default route."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement 3 progressive multiplication levels with increasing difficulty appropriate for 4th graders",
+      "acceptanceCriteria": [
+        "Level 1 generates random single-digit × single-digit multiplication questions",
+        "Level 2 generates random questions with at least one factor up to 12",
+        "Level 3 generates random questions involving a two-digit number multiplied by a single digit",
+        "Each level consists of exactly 10 questions",
+        "Player must score at least 8/10 to pass the level",
+        "Completing a level unlocks the next level",
+        "Questions are randomly generated each attempt"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/questionGenerator.ts",
+          "operation": "create",
+          "description": "Create utility functions to generate random multiplication questions for each level. Level 1: single-digit × single-digit (1-9). Level 2: one factor up to 12 (e.g., 1-12 × 1-9). Level 3: two-digit number × single digit (10-20 × 1-9). Each function returns an array of 10 question objects containing factors and the correct answer. Ensure randomness for each attempt."
+        },
+        {
+          "path": "frontend/src/hooks/useGameState.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage game state including current question index, score, mistakes, lives (3 hearts), questions array, and pass/fail status. Include functions to submit an answer, calculate score, determine if the level is passed (≥8/10), and reset the game state. Track mistakes to manage heart loss (lose a heart after the 2nd mistake)."
+        },
+        {
+          "path": "frontend/src/pages/Level.tsx",
+          "operation": "create",
+          "description": "Create a Level page component that accepts level number as a route parameter. On mount, generate 10 questions using the questionGenerator utility for the appropriate level difficulty. Use the useGameState hook to manage gameplay. When a level is completed with score ≥8/10, call backend unlockNextLevel() and navigate to Level Complete. If score <8/10, navigate to Level Failed. Pass level number and score to result pages via navigation state."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Build a gameplay screen for each level showing level name, question counter, hearts, question, input, submit button, and feedback",
+      "acceptanceCriteria": [
+        "Level name and banner displayed at top of gameplay screen",
+        "Question counter (e.g., 'Question X of 10') is visible",
+        "Heart icons displayed representing player lives/health",
+        "Multiplication question is displayed prominently in large text",
+        "Numeric input field accepts player's answer",
+        "Submit button triggers answer evaluation",
+        "Correct answer triggers green visual feedback with 'Correct!' text",
+        "Wrong answer triggers red visual feedback with 'Wrong! The answer was X' text",
+        "Progress bar reflects answered question count"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/GameplayUI.tsx",
+          "operation": "create",
+          "description": "Create a GameplayUI component that renders the complete gameplay interface. Display level name with Zelda-style title banner at the top, question counter (e.g., 'Question 3 of 10'), HeartIcons component showing current lives, the multiplication question in large fantasy-styled text, a numeric input field, and a golden yellow 'Submit' button. Include a progress bar showing questions answered out of 10. Use ZeldaPanel for layout. Accept props for level number, current question, question index, total questions, lives, and submit handler."
+        },
+        {
+          "path": "frontend/src/components/FeedbackMessage.tsx",
+          "operation": "create",
+          "description": "Create a FeedbackMessage component that displays immediate visual feedback after answer submission. Show a green glow effect with 'Correct!' message for correct answers. Show a red flash effect with 'Wrong! The answer was X' message (displaying the correct answer) for incorrect answers. Use Zelda color palette for styling. Accept props for feedback type (correct/wrong), visibility state, and correct answer."
+        },
+        {
+          "path": "frontend/src/pages/Level.tsx",
+          "operation": "modify",
+          "description": "Integrate GameplayUI and FeedbackMessage components into the Level page. Pass game state from useGameState hook to GameplayUI. Handle answer submission by evaluating the answer, updating game state, showing feedback for 1-2 seconds, then advancing to the next question or completing the level. Display FeedbackMessage when feedback is active."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Implement Level Complete and Level Failed screens with Zelda-styled messages and navigation",
+      "acceptanceCriteria": [
+        "Level Complete screen shows victory message with Zelda-themed flavor text",
+        "Level Complete screen shows player score out of 10",
+        "'Continue to Next Level' or 'Return to Map' button is functional",
+        "Level Failed screen shows defeat message with Zelda-themed flavor text",
+        "Level Failed screen shows player score",
+        "'Try Again' button restarts the current level with new random questions"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LevelComplete.tsx",
+          "operation": "create",
+          "description": "Create LevelComplete page component shown after passing a level (score ≥8/10). Display a Zelda-styled victory message (e.g., 'You obtained the Forest Medallion!' for Level 1, 'The Temple is yours!' for Level 2, 'The Final Dungeon is conquered!' for Level 3). Show the player's score out of 10. Provide a 'Continue to Next Level' button that navigates to the next level (or 'Return to Map' button if on Level 3, navigating back to Home). Use ZeldaPanel and Zelda color styling. Accept level number and score via navigation state or route params."
+        },
+        {
+          "path": "frontend/src/pages/LevelFailed.tsx",
+          "operation": "create",
+          "description": "Create LevelFailed page component shown when score <8/10. Display a Zelda-styled defeat message (e.g., 'The dungeon defeated you...'). Show the player's score out of 10. Provide a 'Try Again' button that navigates back to the same level to restart with new random questions. Use ZeldaPanel and Zelda color styling. Accept level number and score via navigation state or route params."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register routes for LevelComplete (/level-complete) and LevelFailed (/level-failed) pages in the React Router configuration. Ensure navigation state can pass level number and score between routes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Persist level unlock progress in the backend and sync with frontend",
+      "acceptanceCriteria": [
+        "Backend stores unlock state for levels 1, 2, and 3",
+        "Level 1 is always unlocked by default",
+        "Level 2 unlocks only after Level 1 is passed",
+        "Level 3 unlocks only after Level 2 is passed",
+        "Frontend reads unlock state from backend on app load",
+        "Frontend updates backend when a level is passed successfully",
+        "Locked levels are visually indicated as inaccessible on the home screen"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useLevelUnlock.ts",
+          "operation": "create",
+          "description": "Create a custom hook that manages level unlock state by interacting with the backend. Fetch unlock state using getUnlockedLevels() on mount and store it in React state. Provide a function to unlock the next level by calling backend unlockNextLevel(level) when a level is passed. Return unlock state and unlock function for use in components."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Integrate useLevelUnlock hook into the Home component. Display level indicators with locked/unlocked visual states based on the unlock state from the backend. Disable navigation to locked levels. Show sword icons for unlocked levels and lock icons for locked levels. Ensure Level 1 is always accessible."
+        },
+        {
+          "path": "frontend/src/pages/Level.tsx",
+          "operation": "modify",
+          "description": "After successfully completing a level with score ≥8/10, call the unlock function from useLevelUnlock hook to unlock the next level in the backend before navigating to LevelComplete page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Wire generated static image assets into the app UI",
+      "acceptanceCriteria": [
+        "Parchment scroll background texture image is rendered in panel/card backgrounds",
+        "Triforce-inspired golden icon is rendered as an accent on the home screen",
+        "Game logo banner image is displayed on the home screen title area",
+        "All images are served from frontend/public/assets/generated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ui/ZeldaPanel.tsx",
+          "operation": "modify",
+          "description": "Update ZeldaPanel component to use the generated parchment background texture at frontend/public/assets/generated/parchment-bg.dim_800x600.png as a repeating or contained background image for all panel instances throughout the app."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Update Home page to display the generated title banner image at frontend/public/assets/generated/title-banner.dim_800x200.png in the title area. Render the triforce icon at frontend/public/assets/generated/triforce-icon.dim_128x128.png as a decorative accent near the title or level indicators."
+        }
+      ]
+    }
+  ]
+}
