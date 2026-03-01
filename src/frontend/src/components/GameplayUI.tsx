@@ -7,11 +7,11 @@ import { HeartIcons } from "./HeartIcons";
 import { ZeldaPanel } from "./ZeldaPanel";
 
 const LEVEL_NAMES: Record<number, string> = {
-  1: "The Forest Trial",
-  2: "The Temple Challenge",
-  3: "The Shadow Passage",
-  4: "The Shadow Realm",
-  5: "The Sacred Realm",
+  1: "The Coral Reef",
+  2: "The Kelp Forest",
+  3: "The Sunken Temple",
+  4: "The Abyssal Caverns",
+  5: "The Sacred Depths",
 };
 
 const LEVEL_SUBTITLES: Record<number, string> = {
@@ -95,18 +95,20 @@ export function GameplayUI({
     <div className="w-full max-w-2xl mx-auto px-4">
       {/* Level Header */}
       <div className="text-center mb-6">
-        <div className="inline-block">
-          <img
-            src="/assets/generated/title-banner.dim_800x200.png"
-            alt="Quest of Numbers"
-            className="w-full max-w-md mx-auto mb-2 opacity-90"
-            style={{ maxHeight: "80px", objectFit: "contain" }}
-          />
-        </div>
-        <h2 className="zelda-heading text-2xl font-bold font-cinzel">
+        <h2
+          className="text-2xl font-bold font-cinzel"
+          style={{
+            color: "oklch(0.97 0.02 210)",
+            textShadow:
+              "0 1px 0 oklch(0.7 0.15 195 / 0.5), 0 2px 8px rgba(0,0,0,0.6)",
+          }}
+        >
           Level {level}: {LEVEL_NAMES[level]}
         </h2>
-        <p className="font-im-fell text-sm opacity-70 mt-1">
+        <p
+          className="font-im-fell text-sm mt-1"
+          style={{ color: "oklch(0.92 0.04 210)" }}
+        >
           {LEVEL_SUBTITLES[level]}
         </p>
       </div>
@@ -115,17 +117,26 @@ export function GameplayUI({
         {/* HUD Row */}
         <div className="flex items-center justify-between mb-5">
           <div className="flex flex-col items-start">
-            <span className="font-cinzel text-xs font-bold opacity-60 uppercase tracking-widest mb-1">
+            <span
+              className="font-cinzel text-xs font-bold uppercase tracking-widest mb-1"
+              style={{ color: "oklch(0.75 0.20 192)" }}
+            >
               Lives
             </span>
             <HeartIcons total={3} filled={gameState.lives} />
           </div>
           <div className="flex flex-col items-end">
-            <span className="font-cinzel text-xs font-bold opacity-60 uppercase tracking-widest mb-1">
+            <span
+              className="font-cinzel text-xs font-bold uppercase tracking-widest mb-1"
+              style={{ color: "oklch(0.80 0.20 192)" }}
+            >
               Question
             </span>
-            <span className="font-cinzel font-bold text-lg text-zelda-brown-dark">
-              {displayIndex} <span className="opacity-50">/ 10</span>
+            <span
+              className="font-cinzel font-bold text-lg"
+              style={{ color: "oklch(0.95 0.04 210)" }}
+            >
+              {displayIndex} <span className="opacity-90">/ 10</span>
             </span>
           </div>
         </div>
@@ -140,9 +151,15 @@ export function GameplayUI({
 
         {/* Score */}
         <div className="text-center mb-2">
-          <span className="font-cinzel text-sm font-bold opacity-60">
+          <span
+            className="font-cinzel text-sm font-bold"
+            style={{ color: "oklch(0.95 0.04 210)" }}
+          >
             Score:{" "}
-            <span className="text-zelda-green font-bold">
+            <span
+              className="font-bold"
+              style={{ color: "oklch(0.72 0.20 152)" }}
+            >
               {gameState.score}
             </span>{" "}
             / 10
@@ -154,11 +171,21 @@ export function GameplayUI({
           key={`q-${gameState.currentIndex}-${shakeKey}`}
           className={`
             text-center py-8 px-4 mb-6 rounded-sm
-            bg-zelda-parchment-dark border border-zelda-brown/30
             ${gameState.showFeedback && gameState.lastAnswerCorrect === false ? "animate-shake" : ""}
           `}
+          style={{
+            background: "oklch(0.16 0.06 228)",
+            border: "1px solid oklch(0.45 0.12 210 / 0.4)",
+          }}
         >
-          <div className="zelda-heading-gold font-cinzel-decorative text-5xl md:text-6xl font-bold tracking-wide">
+          <div
+            className="font-cinzel-decorative text-5xl md:text-6xl font-bold tracking-wide"
+            style={{
+              color: "oklch(0.96 0.12 192)",
+              textShadow:
+                "0 0 16px oklch(0.78 0.2 195 / 0.8), 0 1px 0 oklch(0.3 0.12 220), 0 2px 4px rgba(0,0,0,0.5)",
+            }}
+          >
             {currentQuestion.factorA} × {currentQuestion.factorB} = ?
           </div>
         </div>

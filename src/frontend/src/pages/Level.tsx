@@ -60,7 +60,7 @@ export function Level() {
       className="min-h-screen flex flex-col items-center justify-center py-8"
       style={{
         background:
-          "linear-gradient(180deg, oklch(0.25 0.09 148) 0%, oklch(0.18 0.07 145) 40%, oklch(0.12 0.05 140) 100%)",
+          "linear-gradient(180deg, oklch(0.28 0.12 215) 0%, oklch(0.20 0.10 225) 40%, oklch(0.12 0.07 235) 100%)",
       }}
     >
       <GameplayUI

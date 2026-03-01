@@ -16,9 +16,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        cinzel: ['"Cinzel"', 'serif'],
-        'cinzel-decorative': ['"Cinzel Decorative"', 'serif'],
-        'im-fell': ['"IM Fell English"', 'Georgia', 'serif'],
+        cinzel: ['Georgia', '"Times New Roman"', 'serif'],
+        'cinzel-decorative': ['Georgia', '"Times New Roman"', 'serif'],
+        'im-fell': ['Georgia', '"Times New Roman"', 'serif'],
       },
       colors: {
         border: 'oklch(var(--border))',
@@ -74,14 +74,25 @@ export default {
         zelda: {
           parchment: 'oklch(var(--zelda-parchment))',
           'parchment-dark': 'oklch(var(--zelda-parchment-dark))',
-          gold: 'oklch(var(--zelda-gold))',
+          gold: 'oklch(var(--zelda-gold) / <alpha-value>)',
           'gold-bright': 'oklch(var(--zelda-gold-bright))',
           green: 'oklch(var(--zelda-green))',
           'green-dark': 'oklch(var(--zelda-green-dark))',
-          brown: 'oklch(var(--zelda-brown))',
+          brown: 'oklch(var(--zelda-brown) / <alpha-value>)',
           'brown-dark': 'oklch(var(--zelda-brown-dark))',
-          red: 'oklch(var(--zelda-red))',
+          red: 'oklch(var(--zelda-red) / <alpha-value>)',
           'red-bright': 'oklch(var(--zelda-red-bright))',
+        },
+        ocean: {
+          deep: 'oklch(var(--ocean-deep) / <alpha-value>)',
+          mid: 'oklch(var(--ocean-mid) / <alpha-value>)',
+          teal: 'oklch(var(--ocean-teal) / <alpha-value>)',
+          'teal-bright': 'oklch(var(--ocean-teal-bright) / <alpha-value>)',
+          green: 'oklch(var(--ocean-green) / <alpha-value>)',
+          'green-bright': 'oklch(var(--ocean-green-bright) / <alpha-value>)',
+          white: 'oklch(var(--ocean-white) / <alpha-value>)',
+          'white-dim': 'oklch(var(--ocean-white-dim) / <alpha-value>)',
+          glow: 'oklch(var(--ocean-glow) / <alpha-value>)',
         }
       },
       borderRadius: {

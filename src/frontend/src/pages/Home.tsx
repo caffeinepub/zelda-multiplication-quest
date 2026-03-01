@@ -1,5 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
-import { Lock, Star, Sword } from "lucide-react";
+import { Lock, Star, Waves } from "lucide-react";
 import React from "react";
 import { ZeldaPanel } from "../components/ZeldaPanel";
 import { useGetUnlockedLevels } from "../hooks/useQueries";
@@ -7,33 +7,33 @@ import { useGetUnlockedLevels } from "../hooks/useQueries";
 const LEVEL_INFO = [
   {
     level: 1,
-    name: "The Forest Trial",
+    name: "The Coral Reef",
     desc: "Single-digit multiplication",
-    flavor: "Enter the Kokiri Forest and prove your worth!",
+    flavor: "Dive into the shallows and prove your worth!",
   },
   {
     level: 2,
-    name: "The Temple Challenge",
+    name: "The Kelp Forest",
     desc: "Times tables up to 12",
-    flavor: "The ancient temple awaits a true scholar!",
+    flavor: "The ancient sea spirits await a true scholar!",
   },
   {
     level: 3,
-    name: "The Shadow Passage",
+    name: "The Sunken Temple",
     desc: "Two-digit × single-digit",
-    flavor: "Brave the cursed canyon, young hero!",
+    flavor: "Brave the depths, young ocean hero!",
   },
   {
     level: 4,
-    name: "The Shadow Realm",
+    name: "The Abyssal Caverns",
     desc: "Two-digit × two-digit",
-    flavor: "Only the wisest can navigate these dark halls!",
+    flavor: "Only the wisest navigator can find the way!",
   },
   {
     level: 5,
-    name: "The Sacred Realm",
+    name: "The Sacred Depths",
     desc: "Master-level multiplication",
-    flavor: "Face Ganon's ultimate math challenge!",
+    flavor: "Face the ultimate ocean math challenge!",
   },
 ];
 
@@ -54,21 +54,27 @@ export function Home() {
       className="min-h-screen flex flex-col"
       style={{
         background:
-          "linear-gradient(180deg, oklch(0.25 0.09 148) 0%, oklch(0.18 0.07 145) 40%, oklch(0.12 0.05 140) 100%)",
+          "linear-gradient(180deg, oklch(0.28 0.12 215) 0%, oklch(0.20 0.10 225) 40%, oklch(0.12 0.07 235) 100%)",
       }}
     >
-      {/* Stars background effect */}
+      {/* Twinkling stars / bubbles background effect */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {Array.from({ length: 30 }, (_, idx) => idx).map((slot) => (
+        {Array.from({ length: 40 }, (_, idx) => idx).map((slot) => (
           <div
             key={`particle-slot-${slot}`}
-            className="absolute rounded-full bg-zelda-gold opacity-30"
+            className="absolute rounded-full animate-twinkle"
             style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
+              width: `${(slot % 3) + 1}px`,
+              height: `${(slot % 3) + 1}px`,
+              top: `${(slot * 7 + 13) % 100}%`,
+              left: `${(slot * 11 + 7) % 100}%`,
+              animationDelay: `${(slot * 0.3) % 3}s`,
+              background:
+                slot % 3 === 0
+                  ? "oklch(0.70 0.20 192)"
+                  : slot % 3 === 1
+                    ? "oklch(0.85 0.04 210)"
+                    : "oklch(0.62 0.18 152)",
             }}
           />
         ))}
@@ -77,29 +83,23 @@ export function Home() {
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
         {/* Title Banner */}
         <div className="text-center mb-8 animate-fade-in-scale">
-          <img
-            src="/assets/generated/title-banner.dim_800x200.png"
-            alt="Quest of Numbers"
-            className="w-full max-w-lg mx-auto mb-4"
-            style={{ maxHeight: "160px", objectFit: "contain" }}
-          />
           <div className="flex items-center justify-center gap-4 mb-2">
-            <img
-              src="/assets/generated/triforce-icon.dim_128x128.png"
-              alt="Triforce"
-              className="w-12 h-12 object-contain"
-            />
-            <h1 className="zelda-heading-gold font-cinzel-decorative text-4xl md:text-5xl font-bold">
+            <h1
+              className="font-cinzel-decorative text-4xl md:text-5xl font-bold"
+              style={{
+                color: "oklch(0.96 0.12 192)",
+                textShadow:
+                  "0 0 16px oklch(0.78 0.2 195 / 0.8), 0 1px 0 oklch(0.3 0.12 220), 0 2px 4px rgba(0,0,0,0.5)",
+              }}
+            >
               Quest of Numbers
             </h1>
-            <img
-              src="/assets/generated/triforce-icon.dim_128x128.png"
-              alt="Triforce"
-              className="w-12 h-12 object-contain"
-            />
           </div>
-          <p className="font-im-fell text-zelda-gold text-lg italic opacity-90">
-            Prove your multiplication mastery across 5 epic levels!
+          <p
+            className="font-im-fell text-lg italic"
+            style={{ color: "oklch(0.97 0.02 210)" }}
+          >
+            Prove your multiplication mastery across 5 epic ocean levels!
           </p>
         </div>
 
@@ -122,34 +122,38 @@ export function Home() {
                         : "level-locked cursor-not-allowed"
                     }
                   `}
-                  style={
-                    isUnlocked
-                      ? {}
-                      : {
-                          backgroundImage:
-                            "url('/assets/generated/parchment-bg.dim_800x600.png')",
-                        }
-                  }
                 >
                   {/* Level Icon */}
                   <div
                     className={`
                       w-14 h-14 rounded-sm flex items-center justify-center shrink-0
-                      border-2 border-zelda-brown
-                      ${
-                        isUnlocked
-                          ? "bg-zelda-green text-zelda-gold"
-                          : "bg-zelda-brown/30 text-zelda-brown/50"
-                      }
+                      border-2
                     `}
+                    style={{
+                      borderColor: isUnlocked
+                        ? "oklch(0.55 0.18 195)"
+                        : "oklch(0.45 0.08 220 / 0.5)",
+                      background: isUnlocked
+                        ? "oklch(0.30 0.14 195 / 0.6)"
+                        : "oklch(0.25 0.06 220 / 0.3)",
+                      color: isUnlocked
+                        ? "oklch(0.70 0.20 192)"
+                        : "oklch(0.50 0.06 220 / 0.5)",
+                    }}
                   >
-                    {isUnlocked ? <Sword size={28} /> : <Lock size={24} />}
+                    {isUnlocked ? <Waves size={28} /> : <Lock size={24} />}
                   </div>
 
                   {/* Level Info */}
-                  <div className="flex-1">
+                  <div
+                    className="flex-1"
+                    style={{ color: "oklch(0.97 0.02 210)" }}
+                  >
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-cinzel font-bold text-xs opacity-60 uppercase tracking-widest">
+                      <span
+                        className="font-cinzel font-bold text-xs uppercase tracking-widest"
+                        style={{ color: "oklch(0.75 0.20 192)" }}
+                      >
                         Level {level}
                       </span>
                       {isUnlocked && (
@@ -159,18 +163,37 @@ export function Home() {
                               <Star
                                 key={`star-${level}-slot-${slot}`}
                                 size={10}
-                                className="text-zelda-gold fill-zelda-gold"
+                                className="animate-shimmer"
+                                style={{
+                                  color: "oklch(0.70 0.20 192)",
+                                  fill: "oklch(0.70 0.20 192)",
+                                  animationDelay: `${slot * 0.2}s`,
+                                }}
                               />
                             ),
                           )}
                         </span>
                       )}
                     </div>
-                    <h3 className="zelda-heading font-cinzel font-bold text-lg">
+                    <h3
+                      className="font-cinzel font-bold text-lg"
+                      style={{
+                        color: "oklch(0.97 0.02 210)",
+                        textShadow: "0 1px 4px rgba(0,0,0,0.5)",
+                      }}
+                    >
                       {name}
                     </h3>
-                    <p className="font-im-fell text-sm opacity-70">{desc}</p>
-                    <p className="font-im-fell text-xs italic opacity-50 mt-1">
+                    <p
+                      className="font-im-fell text-sm"
+                      style={{ color: "oklch(0.92 0.04 210)" }}
+                    >
+                      {desc}
+                    </p>
+                    <p
+                      className="font-im-fell text-xs italic mt-1"
+                      style={{ color: "oklch(0.85 0.04 210)" }}
+                    >
                       {flavor}
                     </p>
                   </div>
@@ -182,7 +205,10 @@ export function Home() {
                         Enter
                       </span>
                     ) : (
-                      <span className="font-cinzel text-xs opacity-40 font-bold">
+                      <span
+                        className="font-cinzel text-xs font-bold"
+                        style={{ color: "oklch(0.65 0.06 220)" }}
+                      >
                         Locked
                       </span>
                     )}
@@ -202,11 +228,14 @@ export function Home() {
           className="zelda-btn zelda-btn-green px-12 py-4 text-xl font-cinzel font-bold tracking-wider"
           disabled={isLoading}
         >
-          ⚔ Begin Quest ⚔
+          🌊 Begin Quest 🌊
         </button>
 
         {isLoading && (
-          <p className="font-im-fell text-zelda-gold mt-4 italic opacity-70 animate-pulse">
+          <p
+            className="font-im-fell mt-4 italic animate-pulse"
+            style={{ color: "oklch(0.80 0.20 192)" }}
+          >
             Loading your progress...
           </p>
         )}
@@ -214,14 +243,18 @@ export function Home() {
 
       {/* Footer */}
       <footer className="relative z-10 text-center py-4 px-4">
-        <p className="font-im-fell text-zelda-gold/50 text-sm">
+        <p
+          className="font-im-fell text-sm"
+          style={{ color: "oklch(0.70 0.20 192 / 0.80)" }}
+        >
           © {new Date().getFullYear()} Quest of Numbers &nbsp;·&nbsp; Built with{" "}
-          <span className="text-zelda-red">♥</span> using{" "}
+          <span style={{ color: "oklch(0.55 0.22 25)" }}>♥</span> using{" "}
           <a
             href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname || "quest-of-numbers")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zelda-gold hover:text-zelda-gold-bright underline underline-offset-2"
+            style={{ color: "oklch(0.70 0.20 192)" }}
+            className="underline underline-offset-2 hover:opacity-80"
           >
             caffeine.ai
           </a>

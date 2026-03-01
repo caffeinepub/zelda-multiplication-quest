@@ -3,27 +3,13 @@ import type React from "react";
 interface ZeldaPanelProps {
   children: React.ReactNode;
   className?: string;
-  noBg?: boolean;
 }
 
-export function ZeldaPanel({
-  children,
-  className = "",
-  noBg = false,
-}: ZeldaPanelProps) {
+export function ZeldaPanel({ children, className = "" }: ZeldaPanelProps) {
   return (
     <div
-      className={`zelda-panel relative ${noBg ? "" : ""} ${className}`}
-      style={
-        noBg
-          ? {}
-          : {
-              backgroundImage:
-                "url('/assets/generated/parchment-bg.dim_800x600.png')",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-            }
-      }
+      className={`zelda-panel relative ${className}`}
+      style={{ backgroundColor: "oklch(0.16 0.09 228)" }}
     >
       {/* Corner decorations */}
       <span className="zelda-corner zelda-corner-tl" />

@@ -8,29 +8,30 @@ const VICTORY_MESSAGES: Record<
   { title: string; flavor: string; reward: string }
 > = {
   1: {
-    title: "The Forest Trial is Conquered!",
-    flavor: "The Great Deku Tree smiles upon you, young hero.",
-    reward: "You obtained the Forest Medallion!",
+    title: "The Coral Reef is Conquered!",
+    flavor: "The ocean spirits smile upon you, young hero.",
+    reward: "You obtained the Coral Medallion!",
   },
   2: {
-    title: "The Temple Bows Before You!",
-    flavor: "The ancient spirits of the temple acknowledge your wisdom.",
-    reward: "You obtained the Fire Medallion!",
+    title: "The Kelp Forest Bows Before You!",
+    flavor: "The ancient sea spirits of the forest acknowledge your wisdom.",
+    reward: "You obtained the Tide Medallion!",
   },
   3: {
-    title: "The Shadow Passage is Cleared!",
-    flavor: "The cursed canyon yields to your mathematical power!",
-    reward: "You obtained the Shadow Crystal!",
+    title: "The Sunken Temple is Cleared!",
+    flavor: "The sunken city yields to your mathematical power!",
+    reward: "You obtained the Deep Crystal!",
   },
   4: {
-    title: "The Shadow Realm is Vanquished!",
-    flavor: "The shadows bow before your mathematical might!",
-    reward: "You obtained the Shadow Medallion!",
+    title: "The Abyssal Caverns Vanquished!",
+    flavor: "The ocean darkness bows before your mathematical might!",
+    reward: "You obtained the Abyss Medallion!",
   },
   5: {
-    title: "The Sacred Realm Yields to You!",
-    flavor: "Ganon is defeated! You are the ultimate math hero of Hyrule!",
-    reward: "You obtained the Complete Triforce!",
+    title: "The Sacred Depths Yield to You!",
+    flavor:
+      "The final challenge is overcome! You are the ultimate ocean math hero!",
+    reward: "You obtained the Complete Ocean Triforce!",
   },
 };
 
@@ -46,19 +47,10 @@ export function LevelComplete() {
       className="min-h-screen flex flex-col items-center justify-center px-4 py-12"
       style={{
         background:
-          "linear-gradient(180deg, oklch(0.25 0.09 148) 0%, oklch(0.18 0.07 145) 40%, oklch(0.12 0.05 140) 100%)",
+          "linear-gradient(180deg, oklch(0.28 0.12 215) 0%, oklch(0.20 0.10 225) 40%, oklch(0.12 0.07 235) 100%)",
       }}
     >
       <div className="w-full max-w-lg animate-fade-in-scale">
-        {/* Triforce accent */}
-        <div className="text-center mb-4">
-          <img
-            src="/assets/generated/triforce-icon.dim_128x128.png"
-            alt="Triforce"
-            className="w-20 h-20 object-contain mx-auto"
-          />
-        </div>
-
         <ZeldaPanel className="p-8 text-center">
           {/* Victory Header */}
           <div className="mb-6">
@@ -67,48 +59,91 @@ export function LevelComplete() {
                 <Star
                   key={`star-slot-${slot}`}
                   size={24}
-                  className="text-zelda-gold fill-zelda-gold"
-                  style={{ animationDelay: `${slot * 0.1}s` }}
+                  className="animate-shimmer"
+                  style={{
+                    color: "oklch(0.70 0.20 192)",
+                    fill: "oklch(0.70 0.20 192)",
+                    animationDelay: `${slot * 0.1}s`,
+                  }}
                 />
               ))}
             </div>
-            <h1 className="zelda-heading-gold font-cinzel-decorative text-2xl md:text-3xl font-bold mb-2">
+            <h1
+              className="font-cinzel-decorative text-2xl md:text-3xl font-bold mb-2"
+              style={{
+                color: "oklch(0.96 0.12 192)",
+                textShadow:
+                  "0 0 16px oklch(0.78 0.2 195 / 0.8), 0 1px 0 oklch(0.3 0.12 220), 0 2px 4px rgba(0,0,0,0.5)",
+              }}
+            >
               Victory!
             </h1>
-            <h2 className="zelda-heading font-cinzel font-bold text-xl mb-3">
+            <h2
+              className="font-cinzel font-bold text-xl mb-3"
+              style={{ color: "oklch(0.97 0.02 210)" }}
+            >
               {info.title}
             </h2>
           </div>
 
           {/* Reward */}
-          <div className="bg-zelda-parchment-dark border border-zelda-gold/50 rounded-sm px-6 py-4 mb-6">
+          <div
+            className="rounded-sm px-6 py-4 mb-6"
+            style={{
+              background: "oklch(0.20 0.08 225)",
+              border: "1px solid oklch(0.55 0.18 195 / 0.5)",
+            }}
+          >
             <div className="flex items-center justify-center gap-2 mb-1">
-              <Shield size={20} className="text-zelda-gold" />
-              <span className="font-cinzel font-bold text-zelda-gold text-lg">
+              <Shield size={20} style={{ color: "oklch(0.70 0.20 192)" }} />
+              <span
+                className="font-cinzel font-bold text-lg"
+                style={{ color: "oklch(0.70 0.20 192)" }}
+              >
                 {info.reward}
               </span>
-              <Shield size={20} className="text-zelda-gold" />
+              <Shield size={20} style={{ color: "oklch(0.70 0.20 192)" }} />
             </div>
-            <p className="font-im-fell italic text-sm opacity-70">
+            <p
+              className="font-im-fell italic text-sm"
+              style={{ color: "oklch(0.93 0.04 210)" }}
+            >
               {info.flavor}
             </p>
           </div>
 
           {/* Score */}
           <div className="mb-8">
-            <p className="font-cinzel text-sm opacity-60 uppercase tracking-widest mb-2">
+            <p
+              className="font-cinzel text-sm uppercase tracking-widest mb-2"
+              style={{ color: "oklch(0.93 0.04 210)" }}
+            >
               Your Score
             </p>
-            <div className="zelda-heading-gold font-cinzel-decorative text-5xl font-bold">
-              {score} <span className="text-2xl opacity-60">/ 10</span>
+            <div
+              className="zelda-heading-gold font-cinzel-decorative text-5xl font-bold"
+              style={{ color: "oklch(0.96 0.12 192)" }}
+            >
+              {score}{" "}
+              <span
+                className="text-2xl opacity-80"
+                style={{ color: "oklch(0.96 0.12 192)" }}
+              >
+                / 10
+              </span>
             </div>
             <div className="flex justify-center gap-1 mt-3">
               {Array.from({ length: 10 }, (_, idx) => idx).map((slot) => (
                 <div
                   key={`dot-slot-${slot}`}
-                  className={`w-5 h-5 rounded-sm border border-zelda-brown/50 ${
-                    slot < score ? "bg-zelda-green" : "bg-zelda-brown/20"
-                  }`}
+                  className="w-5 h-5 rounded-sm"
+                  style={{
+                    background:
+                      slot < score
+                        ? "oklch(0.55 0.18 155)"
+                        : "oklch(0.25 0.06 225)",
+                    border: `1px solid ${slot < score ? "oklch(0.62 0.18 152 / 0.6)" : "oklch(0.40 0.08 220 / 0.4)"}`,
+                  }}
                 />
               ))}
             </div>
@@ -127,7 +162,7 @@ export function LevelComplete() {
                 }
                 className="zelda-btn zelda-btn-green px-8 py-3 text-base font-cinzel font-bold"
               >
-                ⚔ Continue to Level {level + 1}
+                🌊 Continue to Level {level + 1}
               </button>
             ) : (
               <button
@@ -152,14 +187,18 @@ export function LevelComplete() {
 
       {/* Footer */}
       <footer className="mt-8 text-center">
-        <p className="font-im-fell text-zelda-gold/40 text-sm">
+        <p
+          className="font-im-fell text-sm"
+          style={{ color: "oklch(0.70 0.20 192 / 0.80)" }}
+        >
           © {new Date().getFullYear()} Quest of Numbers &nbsp;·&nbsp; Built with{" "}
-          <span className="text-zelda-red">♥</span> using{" "}
+          <span style={{ color: "oklch(0.55 0.22 25)" }}>♥</span> using{" "}
           <a
             href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname || "quest-of-numbers")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zelda-gold hover:text-zelda-gold-bright underline underline-offset-2"
+            style={{ color: "oklch(0.70 0.20 192)" }}
+            className="underline underline-offset-2 hover:opacity-80"
           >
             caffeine.ai
           </a>
