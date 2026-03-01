@@ -9,13 +9,17 @@ import { ZeldaPanel } from "./ZeldaPanel";
 const LEVEL_NAMES: Record<number, string> = {
   1: "The Forest Trial",
   2: "The Temple Challenge",
-  3: "The Final Dungeon",
+  3: "The Shadow Passage",
+  4: "The Shadow Realm",
+  5: "The Sacred Realm",
 };
 
 const LEVEL_SUBTITLES: Record<number, string> = {
   1: "Single-digit multiplication",
   2: "Times tables up to 12",
-  3: "Two-digit multiplication",
+  3: "Two-digit × single-digit",
+  4: "Two-digit × two-digit",
+  5: "Master-level multiplication",
 };
 
 interface GameplayUIProps {

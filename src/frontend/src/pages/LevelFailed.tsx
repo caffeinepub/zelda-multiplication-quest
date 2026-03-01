@@ -41,7 +41,7 @@ export function LevelFailed() {
       className="min-h-screen flex flex-col items-center justify-center px-4 py-12"
       style={{
         background:
-          "linear-gradient(180deg, oklch(0.18 0.05 30) 0%, oklch(0.12 0.04 25) 40%, oklch(0.08 0.03 20) 100%)",
+          "linear-gradient(180deg, oklch(0.25 0.09 148) 0%, oklch(0.18 0.07 145) 40%, oklch(0.12 0.05 140) 100%)",
       }}
     >
       <div className="w-full max-w-lg animate-fade-in-scale">
