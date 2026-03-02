@@ -87,7 +87,7 @@ export function Home() {
             <h1
               className="font-cinzel-decorative text-4xl md:text-5xl font-bold"
               style={{
-                color: "oklch(0.96 0.12 192)",
+                color: "#ffffff",
                 textShadow:
                   "0 0 16px oklch(0.78 0.2 195 / 0.8), 0 1px 0 oklch(0.3 0.12 220), 0 2px 4px rgba(0,0,0,0.5)",
               }}
@@ -97,7 +97,7 @@ export function Home() {
           </div>
           <p
             className="font-im-fell text-lg italic"
-            style={{ color: "oklch(0.97 0.02 210)" }}
+            style={{ color: "#ffffff" }}
           >
             Prove your multiplication mastery across 5 epic ocean levels!
           </p>
@@ -145,14 +145,11 @@ export function Home() {
                   </div>
 
                   {/* Level Info */}
-                  <div
-                    className="flex-1"
-                    style={{ color: "oklch(0.97 0.02 210)" }}
-                  >
+                  <div className="flex-1" style={{ color: "#ffffff" }}>
                     <div className="flex items-center gap-2 mb-1">
                       <span
                         className="font-cinzel font-bold text-xs uppercase tracking-widest"
-                        style={{ color: "oklch(0.75 0.20 192)" }}
+                        style={{ color: "#ffffff" }}
                       >
                         Level {level}
                       </span>
@@ -165,8 +162,8 @@ export function Home() {
                                 size={10}
                                 className="animate-shimmer"
                                 style={{
-                                  color: "oklch(0.70 0.20 192)",
-                                  fill: "oklch(0.70 0.20 192)",
+                                  color: "#ffffff",
+                                  fill: "#ffffff",
                                   animationDelay: `${slot * 0.2}s`,
                                 }}
                               />
@@ -178,7 +175,7 @@ export function Home() {
                     <h3
                       className="font-cinzel font-bold text-lg"
                       style={{
-                        color: "oklch(0.97 0.02 210)",
+                        color: "#ffffff",
                         textShadow: "0 1px 4px rgba(0,0,0,0.5)",
                       }}
                     >
@@ -186,13 +183,13 @@ export function Home() {
                     </h3>
                     <p
                       className="font-im-fell text-sm"
-                      style={{ color: "oklch(0.92 0.04 210)" }}
+                      style={{ color: "#ffffff" }}
                     >
                       {desc}
                     </p>
                     <p
                       className="font-im-fell text-xs italic mt-1"
-                      style={{ color: "oklch(0.85 0.04 210)" }}
+                      style={{ color: "#ffffff" }}
                     >
                       {flavor}
                     </p>
@@ -207,7 +204,7 @@ export function Home() {
                     ) : (
                       <span
                         className="font-cinzel text-xs font-bold"
-                        style={{ color: "oklch(0.65 0.06 220)" }}
+                        style={{ color: "#ffffff" }}
                       >
                         Locked
                       </span>
@@ -234,7 +231,7 @@ export function Home() {
         {isLoading && (
           <p
             className="font-im-fell mt-4 italic animate-pulse"
-            style={{ color: "oklch(0.80 0.20 192)" }}
+            style={{ color: "#ffffff" }}
           >
             Loading your progress...
           </p>
@@ -243,17 +240,14 @@ export function Home() {
 
       {/* Footer */}
       <footer className="relative z-10 text-center py-4 px-4">
-        <p
-          className="font-im-fell text-sm"
-          style={{ color: "oklch(0.70 0.20 192 / 0.80)" }}
-        >
+        <p className="font-im-fell text-sm" style={{ color: "#ffffff" }}>
           © {new Date().getFullYear()} Quest of Numbers &nbsp;·&nbsp; Built with{" "}
-          <span style={{ color: "oklch(0.55 0.22 25)" }}>♥</span> using{" "}
+          <span style={{ color: "#ff6b6b" }}>♥</span> using{" "}
           <a
             href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname || "quest-of-numbers")}`}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "oklch(0.70 0.20 192)" }}
+            style={{ color: "#ffffff" }}
             className="underline underline-offset-2 hover:opacity-80"
           >
             caffeine.ai

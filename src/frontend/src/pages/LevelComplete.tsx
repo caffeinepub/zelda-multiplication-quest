@@ -61,8 +61,8 @@ export function LevelComplete() {
                   size={24}
                   className="animate-shimmer"
                   style={{
-                    color: "oklch(0.70 0.20 192)",
-                    fill: "oklch(0.70 0.20 192)",
+                    color: "#ffffff",
+                    fill: "#ffffff",
                     animationDelay: `${slot * 0.1}s`,
                   }}
                 />
@@ -71,7 +71,7 @@ export function LevelComplete() {
             <h1
               className="font-cinzel-decorative text-2xl md:text-3xl font-bold mb-2"
               style={{
-                color: "oklch(0.96 0.12 192)",
+                color: "#ffffff",
                 textShadow:
                   "0 0 16px oklch(0.78 0.2 195 / 0.8), 0 1px 0 oklch(0.3 0.12 220), 0 2px 4px rgba(0,0,0,0.5)",
               }}
@@ -80,7 +80,7 @@ export function LevelComplete() {
             </h1>
             <h2
               className="font-cinzel font-bold text-xl mb-3"
-              style={{ color: "oklch(0.97 0.02 210)" }}
+              style={{ color: "#ffffff" }}
             >
               {info.title}
             </h2>
@@ -95,18 +95,18 @@ export function LevelComplete() {
             }}
           >
             <div className="flex items-center justify-center gap-2 mb-1">
-              <Shield size={20} style={{ color: "oklch(0.70 0.20 192)" }} />
+              <Shield size={20} style={{ color: "#ffffff" }} />
               <span
                 className="font-cinzel font-bold text-lg"
-                style={{ color: "oklch(0.70 0.20 192)" }}
+                style={{ color: "#ffffff" }}
               >
                 {info.reward}
               </span>
-              <Shield size={20} style={{ color: "oklch(0.70 0.20 192)" }} />
+              <Shield size={20} style={{ color: "#ffffff" }} />
             </div>
             <p
               className="font-im-fell italic text-sm"
-              style={{ color: "oklch(0.93 0.04 210)" }}
+              style={{ color: "#ffffff" }}
             >
               {info.flavor}
             </p>
@@ -116,18 +116,18 @@ export function LevelComplete() {
           <div className="mb-8">
             <p
               className="font-cinzel text-sm uppercase tracking-widest mb-2"
-              style={{ color: "oklch(0.93 0.04 210)" }}
+              style={{ color: "#ffffff" }}
             >
               Your Score
             </p>
             <div
               className="zelda-heading-gold font-cinzel-decorative text-5xl font-bold"
-              style={{ color: "oklch(0.96 0.12 192)" }}
+              style={{ color: "#ffffff" }}
             >
               {score}{" "}
               <span
                 className="text-2xl opacity-80"
-                style={{ color: "oklch(0.96 0.12 192)" }}
+                style={{ color: "#ffffff" }}
               >
                 / 10
               </span>
@@ -187,17 +187,14 @@ export function LevelComplete() {
 
       {/* Footer */}
       <footer className="mt-8 text-center">
-        <p
-          className="font-im-fell text-sm"
-          style={{ color: "oklch(0.70 0.20 192 / 0.80)" }}
-        >
+        <p className="font-im-fell text-sm" style={{ color: "#ffffff" }}>
           © {new Date().getFullYear()} Quest of Numbers &nbsp;·&nbsp; Built with{" "}
-          <span style={{ color: "oklch(0.55 0.22 25)" }}>♥</span> using{" "}
+          <span style={{ color: "#ff6b6b" }}>♥</span> using{" "}
           <a
             href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname || "quest-of-numbers")}`}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "oklch(0.70 0.20 192)" }}
+            style={{ color: "#ffffff" }}
             className="underline underline-offset-2 hover:opacity-80"
           >
             caffeine.ai

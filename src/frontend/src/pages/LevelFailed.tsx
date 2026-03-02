@@ -55,13 +55,13 @@ export function LevelFailed() {
                   border: "2px solid oklch(0.42 0.22 22)",
                 }}
               >
-                <Skull size={40} style={{ color: "oklch(0.60 0.22 25)" }} />
+                <Skull size={40} style={{ color: "#ffffff" }} />
               </div>
             </div>
             <h1
               className="font-cinzel-decorative text-2xl md:text-3xl font-bold mb-2"
               style={{
-                color: "oklch(0.60 0.22 25)",
+                color: "#ffffff",
                 textShadow: "0 0 12px oklch(0.55 0.22 25 / 0.6)",
               }}
             >
@@ -69,7 +69,7 @@ export function LevelFailed() {
             </h1>
             <h2
               className="font-cinzel font-bold text-xl mb-3"
-              style={{ color: "oklch(0.97 0.02 210)" }}
+              style={{ color: "#ffffff" }}
             >
               {info.title}
             </h2>
@@ -85,7 +85,7 @@ export function LevelFailed() {
           >
             <p
               className="font-im-fell italic text-sm"
-              style={{ color: "oklch(0.93 0.04 210)" }}
+              style={{ color: "#ffffff" }}
             >
               {info.flavor}
             </p>
@@ -95,30 +95,28 @@ export function LevelFailed() {
           <div className="mb-8">
             <p
               className="font-cinzel text-sm uppercase tracking-widest mb-2"
-              style={{ color: "oklch(0.93 0.04 210)" }}
+              style={{ color: "#ffffff" }}
             >
               Your Score
             </p>
             <div
               className="font-cinzel-decorative text-5xl font-bold"
-              style={{ color: "oklch(0.72 0.22 25)" }}
+              style={{ color: "#ffffff" }}
             >
               {score}{" "}
               <span
                 className="text-2xl opacity-90"
-                style={{ color: "oklch(0.72 0.22 25)" }}
+                style={{ color: "#ffffff" }}
               >
                 / 10
               </span>
             </div>
             <p
               className="font-im-fell text-sm mt-2"
-              style={{ color: "oklch(0.93 0.04 210)" }}
+              style={{ color: "#ffffff" }}
             >
               You needed{" "}
-              <strong
-                style={{ color: "oklch(0.97 0.02 210)", fontWeight: "bold" }}
-              >
+              <strong style={{ color: "#ffffff", fontWeight: "bold" }}>
                 8
               </strong>{" "}
               correct answers to pass.
@@ -169,17 +167,14 @@ export function LevelFailed() {
 
       {/* Footer */}
       <footer className="mt-8 text-center">
-        <p
-          className="font-im-fell text-sm"
-          style={{ color: "oklch(0.70 0.20 192 / 0.80)" }}
-        >
+        <p className="font-im-fell text-sm" style={{ color: "#ffffff" }}>
           © {new Date().getFullYear()} Quest of Numbers &nbsp;·&nbsp; Built with{" "}
-          <span style={{ color: "oklch(0.55 0.22 25)" }}>♥</span> using{" "}
+          <span style={{ color: "#ff6b6b" }}>♥</span> using{" "}
           <a
             href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname || "quest-of-numbers")}`}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "oklch(0.70 0.20 192)" }}
+            style={{ color: "#ffffff" }}
             className="underline underline-offset-2 hover:opacity-80"
           >
             caffeine.ai

@@ -98,17 +98,14 @@ export function GameplayUI({
         <h2
           className="text-2xl font-bold font-cinzel"
           style={{
-            color: "oklch(0.97 0.02 210)",
+            color: "#ffffff",
             textShadow:
               "0 1px 0 oklch(0.7 0.15 195 / 0.5), 0 2px 8px rgba(0,0,0,0.6)",
           }}
         >
           Level {level}: {LEVEL_NAMES[level]}
         </h2>
-        <p
-          className="font-im-fell text-sm mt-1"
-          style={{ color: "oklch(0.92 0.04 210)" }}
-        >
+        <p className="font-im-fell text-sm mt-1" style={{ color: "#ffffff" }}>
           {LEVEL_SUBTITLES[level]}
         </p>
       </div>
@@ -119,7 +116,7 @@ export function GameplayUI({
           <div className="flex flex-col items-start">
             <span
               className="font-cinzel text-xs font-bold uppercase tracking-widest mb-1"
-              style={{ color: "oklch(0.75 0.20 192)" }}
+              style={{ color: "#ffffff" }}
             >
               Lives
             </span>
@@ -128,15 +125,18 @@ export function GameplayUI({
           <div className="flex flex-col items-end">
             <span
               className="font-cinzel text-xs font-bold uppercase tracking-widest mb-1"
-              style={{ color: "oklch(0.80 0.20 192)" }}
+              style={{ color: "#ffffff" }}
             >
               Question
             </span>
             <span
               className="font-cinzel font-bold text-lg"
-              style={{ color: "oklch(0.95 0.04 210)" }}
+              style={{ color: "#ffffff" }}
             >
-              {displayIndex} <span className="opacity-90">/ 10</span>
+              {displayIndex}{" "}
+              <span className="opacity-90" style={{ color: "#ffffff" }}>
+                / 10
+              </span>
             </span>
           </div>
         </div>
@@ -153,13 +153,10 @@ export function GameplayUI({
         <div className="text-center mb-2">
           <span
             className="font-cinzel text-sm font-bold"
-            style={{ color: "oklch(0.95 0.04 210)" }}
+            style={{ color: "#ffffff" }}
           >
             Score:{" "}
-            <span
-              className="font-bold"
-              style={{ color: "oklch(0.72 0.20 152)" }}
-            >
+            <span className="font-bold" style={{ color: "#ffffff" }}>
               {gameState.score}
             </span>{" "}
             / 10
@@ -181,7 +178,7 @@ export function GameplayUI({
           <div
             className="font-cinzel-decorative text-5xl md:text-6xl font-bold tracking-wide"
             style={{
-              color: "oklch(0.96 0.12 192)",
+              color: "#ffffff",
               textShadow:
                 "0 0 16px oklch(0.78 0.2 195 / 0.8), 0 1px 0 oklch(0.3 0.12 220), 0 2px 4px rgba(0,0,0,0.5)",
             }}
@@ -218,7 +215,8 @@ export function GameplayUI({
               type="button"
               onClick={handleSubmit}
               disabled={!inputValue || gameState.showFeedback}
-              className="zelda-btn zelda-btn-green px-8 h-14 text-base"
+              className="zelda-btn zelda-btn-green px-8 h-14 text-base font-bold"
+              style={{ color: "#ffffff" }}
             >
               Submit
             </button>
